@@ -8,6 +8,10 @@ apply from: '../project_settings.gradle'
 apply from: "../ktlint.gradle"
 apply from: "../dokka.gradle"
 
+def apiKeyPropertiesFile = rootProject.file("apikey.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
+
 android {
     compileSdkVersion project.compileSdkVersion
     buildToolsVersion project.buildToolsVersion
@@ -20,6 +24,7 @@ android {
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         resConfigs "en" //including only english resource files - done to reduce apk size
+        buildConfigField("String", "API_KEY", apiKeyProperties['API_KEY'])
     }
     buildTypes {
         debug {
