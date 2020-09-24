@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_activity_nav"
-    app:startDestination="@id/usersListFragment">
+    app:startDestination="@id/nowPlayingMoviesFragment">
 
     <fragment
-        android:id="@+id/usersListFragment"
-        android:name="com.popcorn.ui.usersList.NowPlayingFragment"
-        android:label="users_list_fragment"
+        android:id="@+id/nowPlayingMoviesFragment"
+        android:name="com.popcorn.ui.usersList.NowPlayingMoviesFragment"
+        android:label="now_playing_movies_fragment"
         tools:layout="@layout/movies_list_fragment" >
         <action
-            android:id="@+id/show_user_details"
-            app:destination="@id/userDetailFragment" />
+            android:id="@+id/show_movie_details"
+            app:destination="@id/movieDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/userDetailFragment"
+        android:id="@+id/movieDetailFragment"
         android:name="com.popcorn.ui.movieDetail.MovieDetailFragment"
-        android:label="user_detail_fragment"
+        android:label="movie_detail_fragment"
         tools:layout="@layout/movie_detail_fragment" >
         <argument
             android:name="movie"

@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.movies_list_fragment.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class NowPlayingFragment : BaseFragment<NowPlayingMoviesViewModel>() {
+class NowPlayingMoviesFragment : BaseFragment<NowPlayingMoviesViewModel>() {
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -24,7 +24,7 @@ class NowPlayingFragment : BaseFragment<NowPlayingMoviesViewModel>() {
 
     private fun initViews() {
         rvUsers.adapter = NowPlayingMovieAdapter(imageLoader) { movie ->
-            val action = NowPlayingFragmentDirections.showUserDetails(movie)
+            val action = NowPlayingMoviesFragmentDirections.showMovieDetails(movie)
             findNavController().navigate(action)
         }
     }
@@ -33,7 +33,10 @@ class NowPlayingFragment : BaseFragment<NowPlayingMoviesViewModel>() {
 
     override fun subscribeToObservers() {
         viewModel.loading.observe(this, { handleLoaderVisibility(it) })
-        viewModel.movies.observe(this, { (rvUsers.adapter as NowPlayingMovieAdapter).submitList(it) })
+        viewModel.movies.observe(
+            this,
+            { (rvUsers.adapter as NowPlayingMovieAdapter).submitList(it) }
+        )
         viewModel.errorMessage.observe(this, { showMessage(it) })
     }
 
