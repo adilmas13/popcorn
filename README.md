@@ -3,7 +3,7 @@
 # Work in Progress
 
 Consist of three main layer (3 Project modules with dependency between them)
-- Presentation - UI (Activity, Fragment, ViewModel, ViewModelFactory)
+- Presentation - UI (Activity, Fragment, ViewModel)
 - Domain (Usecase)
 - Data - Data source (Rest API, Local DB)
 
