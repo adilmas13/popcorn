@@ -4,6 +4,7 @@
     <string name="toggle_theme">Toggle Theme</string>
     <string name="go_ahead">go ahead</string>
     <string name="architecture">Architecture</string>
+    <string name="movie">movie</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

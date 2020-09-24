@@ -5,14 +5,13 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.popcorn.R
 import com.popcorn.base.BaseFragment
-import com.popcorn.ui.UsersListAdapter
 import com.popcorn.utilities.ImageLoader
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.users_list_fragment.*
+import kotlinx.android.synthetic.main.movies_list_fragment.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class UsersListFragment : BaseFragment<UsersListViewModel>() {
+class NowPlayingFragment : BaseFragment<NowPlayingMoviesViewModel>() {
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -20,21 +19,21 @@ class UsersListFragment : BaseFragment<UsersListViewModel>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initViews()
-        viewModel.getUsers()
+        viewModel.getMovies()
     }
 
     private fun initViews() {
-        rvUsers.adapter = UsersListAdapter(imageLoader) { user ->
-            val action = UsersListFragmentDirections.showUserDetails(user)
+        rvUsers.adapter = NowPlayingMovieAdapter(imageLoader) { movie ->
+            val action = NowPlayingFragmentDirections.showUserDetails(movie)
             findNavController().navigate(action)
         }
     }
 
-    override fun getLayoutId() = R.layout.users_list_fragment
+    override fun getLayoutId() = R.layout.movies_list_fragment
 
     override fun subscribeToObservers() {
         viewModel.loading.observe(this, { handleLoaderVisibility(it) })
-        viewModel.data.observe(this, { (rvUsers.adapter as UsersListAdapter).submitList(it) })
+        viewModel.movies.observe(this, { (rvUsers.adapter as NowPlayingMovieAdapter).submitList(it) })
         viewModel.errorMessage.observe(this, { showMessage(it) })
     }
 
@@ -42,5 +41,5 @@ class UsersListFragment : BaseFragment<UsersListViewModel>() {
         loader.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 
-    override fun createViewModel() = UsersListViewModel::class.java
+    override fun createViewModel() = NowPlayingMoviesViewModel::class.java
 }

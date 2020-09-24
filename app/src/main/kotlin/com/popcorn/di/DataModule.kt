@@ -2,10 +2,10 @@ package com.popcorn.di
 
 import android.content.Context
 import com.popcorn.BuildConfig
-import com.popcorn.data.repository.RetrofitUsersRepository
+import com.popcorn.data.repository.RetrofitMovieRepository
 import com.popcorn.data.retrofit.ApiServiceBuilder
 import com.popcorn.domain.NetworkMonitor
-import com.popcorn.domain.repository.UserRepository
+import com.popcorn.domain.repository.MovieRepository
 import com.popcorn.helpers.LiveConnectivityMonitor
 import dagger.Binds
 import dagger.Module
@@ -21,7 +21,7 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun bindUserRepository(repository: RetrofitUsersRepository): UserRepository
+    abstract fun bindMovieRepository(repository: RetrofitMovieRepository): MovieRepository
 }
 
 @Module
@@ -35,15 +35,28 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitApiService(networkMonitor: NetworkMonitor, @BaseUrl baseUrl: String) =
-        ApiServiceBuilder(networkMonitor, baseUrl).build()
+    fun provideRetrofitApiService(
+        networkMonitor: NetworkMonitor,
+        @BaseUrl baseUrl: String,
+        @ApiKey apiKey: String
+    ) =
+        ApiServiceBuilder(networkMonitor, baseUrl, apiKey).build()
 
     @Provides
     @Singleton
     @BaseUrl
     fun provideBaseUrl() = BuildConfig.BASE_URL
 
+    @Provides
+    @Singleton
+    @ApiKey
+    fun provideApiKey() = BuildConfig.API_KEY
+
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
     annotation class BaseUrl
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class ApiKey
 }

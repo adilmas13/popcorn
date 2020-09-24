@@ -1,7 +1,7 @@
 package com.popcorn.data.retrofit
 
-import com.popcorn.data.entities.UserWrapperEntity
-import com.popcorn.data.entities.UsersWrapperResponse
+import com.popcorn.data.entities.MovieResponse
+import com.popcorn.data.entities.MoviesWrapperResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -9,13 +9,13 @@ import retrofit2.http.Path
 interface ApiService {
 
     companion object {
-        const val GET_USERS = "api/users?page=1"
-        const val GET_USER = "api/users"
+        const val GET_NOW_PLAYING_MOVIES = "movie/now_playing"
+        const val GET_MOVIE = "movie"
     }
 
-    @GET(GET_USERS)
-    suspend fun getUsers(): Response<UsersWrapperResponse>
+    @GET(GET_NOW_PLAYING_MOVIES)
+    suspend fun getNowPlayingMovies(): Response<MoviesWrapperResponse>
 
-    @GET("$GET_USER/{id}")
-    suspend fun getUserDetail(@Path("id") id: Int): Response<UserWrapperEntity>
+    @GET("$GET_MOVIE/{id}")
+    suspend fun getMovie(@Path("id") id: Int): Response<MovieResponse>
 }

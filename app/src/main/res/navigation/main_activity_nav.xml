@@ -7,20 +7,20 @@
 
     <fragment
         android:id="@+id/usersListFragment"
-        android:name="com.popcorn.ui.usersList.UsersListFragment"
+        android:name="com.popcorn.ui.usersList.NowPlayingFragment"
         android:label="users_list_fragment"
-        tools:layout="@layout/users_list_fragment" >
+        tools:layout="@layout/movies_list_fragment" >
         <action
             android:id="@+id/show_user_details"
             app:destination="@id/userDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailFragment"
-        android:name="com.popcorn.ui.userDetail.UserDetailFragment"
+        android:name="com.popcorn.ui.movieDetail.MovieDetailFragment"
         android:label="user_detail_fragment"
-        tools:layout="@layout/user_detail_fragment" >
+        tools:layout="@layout/movie_detail_fragment" >
         <argument
-            android:name="user"
-            app:argType="com.popcorn.domain.models.User" />
+            android:name="movie"
+            app:argType="com.popcorn.domain.models.Movie" />
     </fragment>
 </navigation>

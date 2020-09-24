@@ -31,13 +31,13 @@ android {
             debuggable true
             applicationIdSuffix ".debug"
             versionNameSuffix '-dev'
-            buildConfigField("String", 'BASE_URL', '"https://reqres.in/"')
+            buildConfigField("String", 'BASE_URL', '"https://api.themoviedb.org/3/"')
         }
         releaseDebug {
             debuggable true
             shrinkResources project.enableCodeShrinking
             minifyEnabled project.enableProguard
-            buildConfigField("String", 'BASE_URL', '"https://reqres.in/"')
+            buildConfigField("String", 'BASE_URL', '"https://api.themoviedb.org/3/"')
         }
         release {
             debuggable project.enableDebugLogs

@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 class ApiServiceBuilder @Inject constructor(
     private val networkMonitor: NetworkMonitor,
-    private val baseUrl: String
+    private val baseUrl: String,
+    private val apiKey: String
 ) {
 
     companion object {
@@ -32,12 +33,15 @@ class ApiServiceBuilder @Inject constructor(
                 HttpLoggingInterceptor.Level.NONE
         }
         val builder = OkHttpClient.Builder()
-            .addInterceptor(httpInterceptor)
             .connectTimeout(CONNECT_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .addInterceptor(ApiInterceptor())
+            .addInterceptor(httpInterceptor)
+            .addInterceptor(ApiInterceptor(apiKey))
             .addInterceptor(InternetConnectivityInterceptor(networkMonitor))
-        val json = Json { ignoreUnknownKeys = true }
+        val json = Json {
+            ignoreUnknownKeys = true
+            isLenient = true
+        }
         return Retrofit.Builder()
             .client(builder.build())
             .baseUrl(baseUrl)

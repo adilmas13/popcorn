@@ -15,7 +15,7 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = getString(R.string.architecture)
+        supportActionBar?.title = getString(R.string.app_name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
