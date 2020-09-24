@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Architecture</string>
+    <string name="app_name">Popcorn</string>
     <string name="user_profile">User profile</string>
     <string name="toggle_theme">Toggle Theme</string>
     <string name="go_ahead">go ahead</string>
