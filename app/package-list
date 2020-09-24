@@ -5,9 +5,8 @@ com.popcorn
 com.popcorn.base
 com.popcorn.di
 com.popcorn.helpers
-com.popcorn.ui
 com.popcorn.ui.home
-com.popcorn.ui.userDetail
+com.popcorn.ui.movieDetail
 com.popcorn.ui.usersList
 com.popcorn.utilities
 
