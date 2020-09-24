@@ -48,6 +48,7 @@ abstract class BaseFragment<M : ViewModel> : Fragment() {
     fun showMessage(message: String) {
         toastInstance = showToast(message)
     }
+
     override fun onDestroy() {
         toastInstance?.cancel() // cancel and toast message that is being displayed
         super.onDestroy()

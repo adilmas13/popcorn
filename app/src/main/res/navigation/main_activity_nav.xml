@@ -9,7 +9,7 @@
         android:id="@+id/nowPlayingMoviesFragment"
         android:name="com.popcorn.ui.usersList.NowPlayingMoviesFragment"
         android:label="now_playing_movies_fragment"
-        tools:layout="@layout/movies_list_fragment" >
+        tools:layout="@layout/movies_list_fragment">
         <action
             android:id="@+id/show_movie_details"
             app:destination="@id/movieDetailFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.popcorn.ui.movieDetail.MovieDetailFragment"
         android:label="movie_detail_fragment"
-        tools:layout="@layout/movie_detail_fragment" >
+        tools:layout="@layout/movie_detail_fragment">
         <argument
             android:name="movie"
             app:argType="com.popcorn.domain.models.Movie" />
