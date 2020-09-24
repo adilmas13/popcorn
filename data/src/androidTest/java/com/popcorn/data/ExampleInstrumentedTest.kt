@@ -11,6 +11,6 @@ package com.popcorn.data
 //    fun useAppContext() {
 //        // Context of the app under test.
 //        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-//        assertEquals("com.androidarchitecture.data.test", appContext.packageName)
+//        assertEquals("com.popcorn.data.test", appContext.packageName)
 //    }
 // }
