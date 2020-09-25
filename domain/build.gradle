@@ -4,6 +4,10 @@ apply plugin: 'kotlinx-serialization'
 apply from: "../ktlint.gradle"
 apply from: "../dokka.gradle"
 
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+    test.java.srcDirs += 'src/test/kotlin'
+}
 dependencies {
     implementation domainDependencies.values()
 }
