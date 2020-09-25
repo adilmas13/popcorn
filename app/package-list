@@ -7,6 +7,7 @@ com.popcorn.di
 com.popcorn.helpers
 com.popcorn.ui.home
 com.popcorn.ui.movieDetail
+com.popcorn.ui.splash
 com.popcorn.ui.usersList
 com.popcorn.utilities
 
