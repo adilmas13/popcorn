@@ -1,4 +1,4 @@
-package com.popcorn.ui.usersList
+package com.popcorn.ui.nowPlayingMovies
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData

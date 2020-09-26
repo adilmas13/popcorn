@@ -1,4 +1,4 @@
-package com.popcorn.ui.usersList
+package com.popcorn.ui.nowPlayingMovies
 
 import android.os.Bundle
 import android.view.View
