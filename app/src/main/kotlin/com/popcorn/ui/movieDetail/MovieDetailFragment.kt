@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.popcorn.R
 import com.popcorn.base.BaseFragment
+import com.popcorn.databinding.MovieDetailFragmentBinding
 import com.popcorn.domain.models.Movie
 import com.popcorn.utilities.ImageLoader
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.movie_detail_fragment.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MovieDetailFragment : BaseFragment<MovieDetailViewModel>() {
+class MovieDetailFragment : BaseFragment<MovieDetailFragmentBinding, MovieDetailViewModel>() {
 
     @Inject
     lateinit var imageLoader: ImageLoader

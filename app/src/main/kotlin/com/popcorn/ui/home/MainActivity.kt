@@ -8,11 +8,12 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import com.popcorn.R
 import com.popcorn.base.BaseActivity
+import com.popcorn.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<MainActivityViewModel>() {
+class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() {
 
     companion object {
         fun getIntent(context: Context) = Intent(context, MainActivity::class.java)

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 fun View.makeVisible() {
@@ -44,6 +46,14 @@ fun BottomSheetBehavior<*>?.isExpanded(): Boolean {
 
 fun ViewGroup.inflate(@LayoutRes layoutId: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(this.context).inflate(layoutId, this, attachToRoot)
+}
+
+fun <T : ViewBinding> ViewGroup.inflate(
+    @LayoutRes layoutId: Int,
+    attachToRoot: Boolean = false
+): T {
+    val inflater = LayoutInflater.from(this.context)
+    return DataBindingUtil.inflate(inflater, layoutId, this, attachToRoot)
 }
 
 fun Activity.showToast(message: String): Toast {

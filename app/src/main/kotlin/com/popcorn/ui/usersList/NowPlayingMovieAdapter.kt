@@ -1,15 +1,14 @@
 package com.popcorn.ui.usersList
 
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.popcorn.R
+import com.popcorn.databinding.AdapterMovieBinding
 import com.popcorn.domain.models.Movie
 import com.popcorn.utilities.ImageLoader
 import com.popcorn.utilities.inflate
-import kotlinx.android.synthetic.main.adapter_movie.view.*
 
 class NowPlayingMovieAdapter(
     private val imageLoader: ImageLoader,
@@ -30,7 +29,7 @@ class NowPlayingMovieAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        NowPlayingMoviesViewHolder(parent.inflate(R.layout.adapter_movie))
+        NowPlayingMoviesViewHolder(parent.inflate<AdapterMovieBinding>(R.layout.adapter_movie))
 
     override fun onBindViewHolder(holder: NowPlayingMoviesViewHolder, position: Int) {
         holder.bind(currentList[position])
@@ -38,17 +37,15 @@ class NowPlayingMovieAdapter(
 
     override fun getItemCount() = currentList.size
 
-    inner class NowPlayingMoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class NowPlayingMoviesViewHolder(val binding: AdapterMovieBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
-            itemView.setOnClickListener { userClickListener(currentList[layoutPosition]) }
+            binding.root.setOnClickListener { userClickListener(currentList[layoutPosition]) }
         }
 
-        fun bind(user: Movie) {
-            itemView.apply {
-                tvUsername.text = user.title
-                tvEmail.text = user.title
-                imageLoader.loadCircularImage(ivMovie, user.image)
-            }
+        fun bind(movie: Movie) {
+            binding.movie = movie
+            imageLoader.loadCircularImage(binding.ivMovie, movie.image)
         }
     }
 }

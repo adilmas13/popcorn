@@ -5,13 +5,15 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.popcorn.R
 import com.popcorn.base.BaseFragment
+import com.popcorn.databinding.MoviesListFragmentBinding
 import com.popcorn.utilities.ImageLoader
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.movies_list_fragment.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class NowPlayingMoviesFragment : BaseFragment<NowPlayingMoviesViewModel>() {
+class NowPlayingMoviesFragment :
+    BaseFragment<MoviesListFragmentBinding, NowPlayingMoviesViewModel>() {
 
     @Inject
     lateinit var imageLoader: ImageLoader

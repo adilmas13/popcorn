@@ -3,11 +3,12 @@ package com.popcorn.ui.splash
 import android.os.Bundle
 import com.popcorn.R
 import com.popcorn.base.BaseActivity
+import com.popcorn.databinding.ActivitySplashBinding
 import com.popcorn.ui.home.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashActivity : BaseActivity<SplashActivityViewModel>() {
+class SplashActivity : BaseActivity<ActivitySplashBinding, SplashActivityViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,15 +20,14 @@ class SplashActivity : BaseActivity<SplashActivityViewModel>() {
     override fun subscribeToObservers() {
         val ctx = this
         viewModel.apply {
-            onSuccess.observe(
-                ctx,
-                {
-                    startActivity(MainActivity.getIntent(ctx))
-                    finish()
-                }
-            )
+            onSuccess.observe(ctx, { redirectToHome() })
             onError.observe(ctx, { showMessage("Something went wrong") })
         }
+    }
+
+    private fun redirectToHome() {
+        startActivity(MainActivity.getIntent(this))
+        finish()
     }
 
     override fun createViewModel() = SplashActivityViewModel::class.java

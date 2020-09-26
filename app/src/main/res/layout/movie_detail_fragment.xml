@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.popcorn.ui.movieDetail.MovieDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
-        android:orientation="vertical">
+        tools:context="com.popcorn.ui.movieDetail.MovieDetailFragment">
 
-        <ImageView
-            android:id="@+id/ivMovie"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:contentDescription="@string/movie"
-            android:scaleType="centerCrop" />
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvMovieTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:textColor="@color/on_background"
-            android:textSize="20sp" />
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/ivMovie"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:contentDescription="@string/movie"
+                android:scaleType="centerCrop" />
 
-    <ProgressBar
-        android:id="@+id/loader"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:visibility="gone" />
+            <TextView
+                android:id="@+id/tvMovieTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textColor="@color/on_background"
+                android:textSize="20sp" />
+        </LinearLayout>
 
-</FrameLayout>
+        <ProgressBar
+            android:id="@+id/loader"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</layout>
