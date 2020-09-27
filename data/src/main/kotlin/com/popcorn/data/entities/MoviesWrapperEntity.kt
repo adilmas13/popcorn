@@ -27,5 +27,5 @@ data class MovieResponse(
     @SerialName("release_date") private val releaseDate: String,
     @SerialName("vote_average") private val voteAverage: String,
 ) {
-    fun toMovie() = Movie(id, title, "https://image.tmdb.org/t/p/w780$posterPath")
+    fun toMovie() = Movie(id, title, posterPath)
 }

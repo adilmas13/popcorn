@@ -1,5 +1,6 @@
 package com.popcorn.di
 
+import com.popcorn.domain.repository.ImageConfigRepository
 import com.popcorn.helpers.CoilImageLoader
 import com.popcorn.utilities.ImageLoader
 import dagger.Module
@@ -14,6 +15,6 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideImageLoader(): ImageLoader =
-        CoilImageLoader()
+    fun provideImageLoader(imageConfigRepository: ImageConfigRepository): ImageLoader =
+        CoilImageLoader(imageConfigRepository)
 }
