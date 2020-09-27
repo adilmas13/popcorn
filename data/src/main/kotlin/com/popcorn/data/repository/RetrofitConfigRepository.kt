@@ -21,5 +21,8 @@ class RetrofitConfigRepository @Inject constructor(
 
     private suspend fun storeImageConfig(response: ImageConfigResponse) {
         imageStorage.storeBaseUrl(response.baseUrl)
+        imageStorage.storeLogo(response.logoSizes)
+        imageStorage.storeBackDrop(response.backdropSizes)
+        imageStorage.storePosters(response.posterSizes)
     }
 }
