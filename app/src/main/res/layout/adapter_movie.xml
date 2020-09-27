@@ -29,7 +29,7 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="20dp"
                 android:contentDescription="@string/movie"
-                android:src="@drawable/ic_launcher_background"
+                tools:src="@drawable/ic_launcher_background"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
