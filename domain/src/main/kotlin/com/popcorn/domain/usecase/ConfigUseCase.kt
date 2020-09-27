@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 class ConfigUseCase @Inject constructor(
     private val repository: ConfigRepository
-) : UseCase<Boolean>() {
+) : UseCase<Unit>() {
 
     override suspend fun makeRequest() = repository.getConfig()
 
-    suspend fun getConfig(): Flow<Boolean> {
+    suspend fun getConfig(): Flow<Unit> {
         return execute()
     }
 }

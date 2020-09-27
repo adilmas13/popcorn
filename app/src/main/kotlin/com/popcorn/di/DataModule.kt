@@ -1,12 +1,17 @@
 package com.popcorn.di
 
 import android.content.Context
+import androidx.datastore.preferences.createDataStore
 import com.popcorn.BuildConfig
+import com.popcorn.data.repository.LocalStorageImageConfigRepository
 import com.popcorn.data.repository.RetrofitConfigRepository
 import com.popcorn.data.repository.RetrofitMovieRepository
 import com.popcorn.data.retrofit.ApiServiceBuilder
+import com.popcorn.data.storage.DataStoreLocalStorage
+import com.popcorn.domain.LocalStorage
 import com.popcorn.domain.NetworkMonitor
 import com.popcorn.domain.repository.ConfigRepository
+import com.popcorn.domain.repository.ImageConfigRepository
 import com.popcorn.domain.repository.MovieRepository
 import com.popcorn.helpers.LiveConnectivityMonitor
 import dagger.Binds
@@ -27,6 +32,39 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindMovieRepository(repository: RetrofitMovieRepository): MovieRepository
+
+    @Binds
+    abstract fun bindImageConfigRepository(repository: LocalStorageImageConfigRepository): ImageConfigRepository
+}
+
+@Module
+@InstallIn(ApplicationComponent::class)
+abstract class StorageModule {
+
+    @Binds
+    abstract fun bindLocalStorage(storage: DataStoreLocalStorage): LocalStorage
+}
+
+@Module
+@InstallIn(ApplicationComponent::class)
+object DataStorageModule {
+    @Provides
+    @Singleton
+    fun provideDataStore(
+        @ApplicationContext context: Context,
+        @AppId appId: String
+    ) = context.createDataStore(
+        name = "$appId.popcorn"
+    )
+
+    @Provides
+    @Singleton
+    @AppId
+    fun provideAppId() = BuildConfig.APPLICATION_ID
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class AppId
 }
 
 @Module

@@ -67,7 +67,8 @@ ext {
             javaX                : "javax.inject:javax.inject:1",
             kotlinxSerialization : "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.0-RC",
             coroutines           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
-            coroutinesAndroid    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+            coroutinesAndroid    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+            dataStore            : "androidx.datastore:datastore-preferences:1.0.0-alpha01"
     ]
 
     testDependencies = [
@@ -92,7 +93,8 @@ ext {
             lifeCycleCompiler: dependencies.lifeCycleCompiler,
             arch             : dependencies.arch,
             hilt             : dependencies.hilt,
-            hiltViewModel    : dependencies.hiltViewModel
+            hiltViewModel    : dependencies.hiltViewModel,
+            dataStore        : dependencies.dataStore
     ]
 
     annotationProcessingDependencies = [
@@ -106,6 +108,7 @@ ext {
             okHttp3Logging   : dependencies.okHttp3Logging,
             javaX            : dependencies.javaX,
             coroutines       : dependencies.coroutines,
+            dataStore        : dependencies.dataStore
     ]
 
     domainDependencies = [
