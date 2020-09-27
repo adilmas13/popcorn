@@ -7,6 +7,7 @@ import androidx.datastore.preferences.preferencesKey
 import com.popcorn.domain.LocalStorage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
@@ -37,7 +38,10 @@ class DataStoreLocalStorage @Inject constructor(
     }
 
     override suspend fun <T> getList(key: String, default: List<T>): Flow<List<T>> {
-        val prefKey = preferencesKey<List<T>>(key)
-        return dataStore.data.map { it[prefKey] ?: default }
+        val prefKey = preferencesKey<String>(key)
+        return dataStore.data.map {
+            val temp = it[prefKey] ?: ""
+            json.decodeFromString(temp)
+        }
     }
 }
