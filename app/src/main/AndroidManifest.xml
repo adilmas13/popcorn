@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.home.MainActivity"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

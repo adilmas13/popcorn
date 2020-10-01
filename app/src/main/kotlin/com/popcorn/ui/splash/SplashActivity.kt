@@ -4,13 +4,14 @@ import android.os.Bundle
 import com.popcorn.R
 import com.popcorn.base.BaseActivity
 import com.popcorn.databinding.ActivitySplashBinding
-import com.popcorn.ui.home.MainActivity
+import com.popcorn.utilities.setTransparentStatusBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding, SplashActivityViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTransparentStatusBar()
         super.onCreate(savedInstanceState)
         viewModel.getConfig()
     }
@@ -26,8 +27,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashActivityViewMod
     }
 
     private fun redirectToHome() {
-        startActivity(MainActivity.getIntent(this))
-        finish()
+//        startActivity(MainActivity.getIntent(this))
+//        finish()
     }
 
     override fun createViewModel() = SplashActivityViewModel::class.java
