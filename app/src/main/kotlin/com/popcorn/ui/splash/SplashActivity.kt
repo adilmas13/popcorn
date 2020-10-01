@@ -6,13 +6,17 @@ import com.popcorn.base.BaseActivity
 import com.popcorn.databinding.ActivitySplashBinding
 import com.popcorn.utilities.setTransparentStatusBar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_splash.*
 
 @AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding, SplashActivityViewModel>() {
 
+    private lateinit var animator: SplashActivityAnimator
     override fun onCreate(savedInstanceState: Bundle?) {
         setTransparentStatusBar()
         super.onCreate(savedInstanceState)
+        animator = SplashActivityAnimator(tvPop, tvCorn, ivLogo).apply { init() }
+        animator.startAnimation()
         viewModel.getConfig()
     }
 

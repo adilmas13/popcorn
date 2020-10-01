@@ -53,17 +53,18 @@
             app:layout_constraintStart_toStartOf="@+id/tvCorn" />
 
         <ImageView
+            android:id="@+id/ivLogo"
             android:layout_width="230dp"
             android:layout_height="230dp"
-            android:padding="30dp"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="20dp"
-            app:layout_constraintVertical_bias="1"
             android:background="@drawable/drawable_circle"
+            android:contentDescription="@string/pop"
+            android:padding="30dp"
             android:src="@drawable/ic_popcorn"
             app:layout_constraintBottom_toTopOf="@+id/tvPop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
