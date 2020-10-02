@@ -4,6 +4,7 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
@@ -72,4 +73,21 @@ fun View.setToolTip(@StringRes toolTip: Int) {
     this.setOnLongClickListener {
         Toast.makeText(this.context, toolTip, Toast.LENGTH_SHORT).show(); true
     }
+}
+
+fun View.onRendered(callback: () -> Unit) {
+    if (width > 0 && height > 0) {
+        callback()
+        return
+    }
+    viewTreeObserver.addOnGlobalLayoutListener(
+        object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                if (width > 0 && height > 0) {
+                    viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    callback()
+                }
+            }
+        }
+    )
 }
