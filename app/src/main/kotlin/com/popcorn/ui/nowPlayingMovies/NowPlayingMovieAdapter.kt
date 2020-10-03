@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.popcorn.R
 import com.popcorn.databinding.AdapterMovieBinding
 import com.popcorn.domain.models.Movie
+import com.popcorn.helpers.ImageType
+import com.popcorn.helpers.TransformationType
 import com.popcorn.utilities.ImageLoader
 import com.popcorn.utilities.inflate
 
@@ -45,7 +47,12 @@ class NowPlayingMovieAdapter(
 
         fun bind(movie: Movie) {
             binding.movie = movie
-            imageLoader.loadCircularImage(binding.ivMovie, movie.image)
+            imageLoader.load(
+                binding.ivMovie,
+                movie.image,
+                ImageType.Poster,
+                TransformationType.Circle
+            )
         }
     }
 }

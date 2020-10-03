@@ -1,11 +1,8 @@
 package com.popcorn.helpers
 
 import android.widget.ImageView
-import coil.api.load
-import coil.transform.BlurTransformation
+import coil.load
 import coil.transform.CircleCropTransformation
-import coil.transform.GrayscaleTransformation
-import coil.transform.RoundedCornersTransformation
 import com.popcorn.domain.repository.ImageConfigRepository
 import com.popcorn.utilities.ImageLoader
 import kotlinx.coroutines.CoroutineScope
@@ -17,59 +14,42 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+// https://image.tmdb.org/t/p/original${fileName}
+
 class CoilImageLoader @Inject constructor(
     val repository: ImageConfigRepository
 ) : ImageLoader {
 
-    override fun loadImage(view: ImageView, url: String) {
-        view.load(url) {
-            crossfade(1000)
-        }
-    }
-
-    override fun loadCircularImage(view: ImageView, fileName: String) {
-        loader(fileName) {
-            view.load(it) {
+    override fun load(
+        view: ImageView,
+        filePath: String,
+        type: ImageType,
+        transformationType: TransformationType
+    ) {
+        makeConfig(filePath, type) { url ->
+            view.load(url) {
                 crossfade(1000)
-                transformations(CircleCropTransformation())
+                when (transformationType) {
+                    TransformationType.Circle -> transformations(CircleCropTransformation())
+                }
             }
         }
     }
 
-    override fun loadBlurImage(
-        view: ImageView,
-        url: String,
-        radius: Float,
-        sampling: Float
-    ) {
-        view.load(url) {
-            crossfade(1000)
-            transformations(BlurTransformation(view.context, radius, sampling))
-        }
-    }
-
-    override fun loadRoundedCornersImage(view: ImageView, url: String, radius: Float) {
-        view.load(url) {
-            crossfade(1000)
-            transformations(RoundedCornersTransformation(radius))
-        }
-    }
-
-    override fun loadGreyScaleImage(view: ImageView, url: String) {
-        view.load(url) {
-            crossfade(1000)
-            transformations(GrayscaleTransformation())
-        }
-    }
-
-    private fun loader(
+    private fun makeConfig(
         fileName: String,
-        url: (String) -> Unit
+        type: ImageType,
+        url: (String) -> Unit,
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             val baseUrl = repository.getBaseUrl()
+            val imageType = when (type) {
+                ImageType.Poster -> repository.getPosters()
+                ImageType.BackDrop -> repository.getBackDrop()
+                ImageType.Logo -> repository.getLogo()
+            }
             baseUrl
-                .zip(repository.getBackDrop()) { url, images -> "$url${images[images.size - 1]}$fileName" }
+                .zip(imageType) { url, image -> "$url${image}$fileName" }
                 .catch {
                     it.printStackTrace()
                 }
@@ -80,4 +60,15 @@ class CoilImageLoader @Inject constructor(
                 }
         }
     }
+}
+
+sealed class TransformationType {
+    object Normal : TransformationType()
+    object Circle : TransformationType()
+}
+
+sealed class ImageType {
+    object Logo : ImageType()
+    object BackDrop : ImageType()
+    object Poster : ImageType()
 }

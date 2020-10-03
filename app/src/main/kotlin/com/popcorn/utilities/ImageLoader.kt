@@ -1,16 +1,15 @@
 package com.popcorn.utilities
 
 import android.widget.ImageView
+import com.popcorn.helpers.ImageType
+import com.popcorn.helpers.TransformationType
 
 interface ImageLoader {
 
-    fun loadImage(view: ImageView, url: String)
-
-    fun loadCircularImage(view: ImageView, url: String)
-
-    fun loadBlurImage(view: ImageView, url: String, radius: Float, sampling: Float)
-
-    fun loadRoundedCornersImage(view: ImageView, url: String, radius: Float = 0f)
-
-    fun loadGreyScaleImage(view: ImageView, url: String)
+    fun load(
+        view: ImageView,
+        filePath: String,
+        type: ImageType = ImageType.Poster,
+        transformationType: TransformationType = TransformationType.Normal
+    )
 }

@@ -34,7 +34,7 @@ class MovieDetailFragment : BaseFragment<MovieDetailFragmentBinding, MovieDetail
     }
 
     private fun showDetails(it: Movie) {
-        imageLoader.loadImage(ivMovie, it.image)
+        // imageLoader.loadImage(ivMovie, it.image)
         tvMovieTitle.text = it.title
     }
 
