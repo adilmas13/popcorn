@@ -1,7 +1,6 @@
 package com.popcorn.ui.splash
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,6 +20,7 @@ import kotlinx.coroutines.launch
 class SplashActivity : BaseActivity<ActivitySplashBinding, SplashActivityViewModel>() {
 
     private lateinit var animator: SplashActivityAnimator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTransparentStatusBar()
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashActivityViewMod
     private fun timer(): LiveData<Boolean> {
         val liveData = MutableLiveData<Boolean>()
         lifecycleScope.launch {
-            delay(1000)
+            delay(4000)
             liveData.postValue(true)
         }
         return liveData
@@ -67,7 +67,7 @@ fun <T1, T2, T3> zip2(
     src2: LiveData<T2>,
     src3: LiveData<T3>
 ): MediatorLiveData<Boolean> {
-    val mediatorLiveData = MediatorLiveData<kotlin.Boolean>()
+    val mediatorLiveData = MediatorLiveData<Boolean>()
     var check = 0
 
     fun update() {
@@ -77,15 +77,12 @@ fun <T1, T2, T3> zip2(
     }
 
     mediatorLiveData.addSource(src1) {
-        Log.d("THE_SOURCE", "SOURCE_1")
         update()
     }
     mediatorLiveData.addSource(src2) {
-        Log.d("THE_SOURCE", "SOURCE_2")
         update()
     }
     mediatorLiveData.addSource(src3) {
-        Log.d("THE_SOURCE", "SOURCE_3")
         update()
     }
     return mediatorLiveData

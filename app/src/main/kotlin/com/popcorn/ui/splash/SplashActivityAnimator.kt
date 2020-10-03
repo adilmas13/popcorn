@@ -92,7 +92,7 @@ class SplashActivityAnimator(
         }.build()
         val popTextBuilder = popText.animate {
             translate {
-                translateXTo = screenWidth.toFloat()
+                translateXTo = screenWidth.toFloat() - 100
             }
             alpha {
                 alpha = 0f
@@ -113,9 +113,10 @@ class SplashActivityAnimator(
             cornTextBuilder.animator
         )
         animationSet.interpolator = OvershootInterpolator()
-        animationSet.duration = 1000L
-        animationSet.startDelay = 3000
-        animationSet.doOnEnd { onCompleted() }
+        animationSet.duration = 500L
+        animationSet.doOnEnd {
+            onCompleted()
+        }
         animationSet.start()
     }
 }
