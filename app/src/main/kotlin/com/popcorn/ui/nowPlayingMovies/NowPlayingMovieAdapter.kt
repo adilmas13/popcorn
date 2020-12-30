@@ -51,7 +51,7 @@ class NowPlayingMovieAdapter(
                 binding.ivMovie,
                 movie.image,
                 ImageType.Poster,
-                TransformationType.Circle
+                TransformationType.Normal
             )
         }
     }

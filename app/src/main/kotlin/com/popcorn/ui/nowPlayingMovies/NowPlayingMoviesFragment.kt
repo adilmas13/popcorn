@@ -21,6 +21,7 @@ class NowPlayingMoviesFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initViews()
+        rvUsers.offscreenPageLimit = 3
         viewModel.getMovies()
     }
 
