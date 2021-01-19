@@ -62,7 +62,7 @@ ext {
             hiltCompiler         : "com.google.dagger:hilt-android-compiler:$hilt_version",
             hiltViewModelCompiler: "androidx.hilt:hilt-compiler:$hiltViewModel_version",
             retrofit             : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            retrofitConverter    : "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8  .0",
+            retrofitConverter    : "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0",
             okHttp3Logging       : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             javaX                : "javax.inject:javax.inject:1",
             kotlinxSerialization : "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.0-RC",
