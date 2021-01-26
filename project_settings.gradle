@@ -50,7 +50,7 @@ ext {
             viewPager            : "androidx.viewpager2:viewpager2:1.0.0-beta04",
             recyclerView         : "androidx.recyclerview:recyclerview:1.1.0-beta04",
             cardView             : "androidx.cardview:cardview:1.0.0",
-            designSupport        : "com.google.android.material:material:1.2.0-alpha05",
+            designSupport        : "com.google.android.material:material:1.2.1",
             navigation           : "androidx.navigation:navigation-fragment-ktx:$nav_version",
             navigation_ui        : "androidx.navigation:navigation-ui-ktx:$nav_version",
             multidex             : "androidx.multidex:multidex:$multidex_version",
