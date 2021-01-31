@@ -65,7 +65,7 @@ ext {
             retrofitConverter    : "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0",
             okHttp3Logging       : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
             javaX                : "javax.inject:javax.inject:1",
-            kotlinxSerialization : "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.0-RC",
+            kotlinxSerialization : "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1",
             coroutines           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
             coroutinesAndroid    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
             dataStore            : "androidx.datastore:datastore-preferences:1.0.0-alpha05",
@@ -112,7 +112,8 @@ ext {
             okHttp3Logging   : dependencies.okHttp3Logging,
             javaX            : dependencies.javaX,
             coroutines       : dependencies.coroutines,
-            dataStore        : dependencies.dataStore
+            dataStore        : dependencies.dataStore,
+            kotlinxSerialization: dependencies.kotlinxSerialization,
     ]
 
     domainDependencies = [
