@@ -69,7 +69,7 @@ ext {
             coroutines           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
             coroutinesAndroid    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
             dataStore            : "androidx.datastore:datastore-preferences:1.0.0-alpha05",
-            lifeCycleScope       : "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha01",
+            lifeCycleScope       : "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0",
             liveData             : "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     ]
 
@@ -107,18 +107,17 @@ ext {
     ]
 
     dataDependencies = [
-            retrofit         : dependencies.retrofit,
-            retrofitConverter: dependencies.retrofitConverter,
-            okHttp3Logging   : dependencies.okHttp3Logging,
-            javaX            : dependencies.javaX,
-            coroutines       : dependencies.coroutines,
-            dataStore        : dependencies.dataStore,
+            retrofit            : dependencies.retrofit,
+            retrofitConverter   : dependencies.retrofitConverter,
+            okHttp3Logging      : dependencies.okHttp3Logging,
+            javaX               : dependencies.javaX,
+            coroutines          : dependencies.coroutines,
+            dataStore           : dependencies.dataStore,
             kotlinxSerialization: dependencies.kotlinxSerialization,
     ]
 
     domainDependencies = [
             kotlin              : dependencies.kotlin,
-            kotlinxSerialization: dependencies.kotlinxSerialization,
             coroutines          : dependencies.coroutines,
             coroutinesAndroid   : dependencies.coroutinesAndroid,
             javaX               : dependencies.javaX
