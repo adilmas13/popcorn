@@ -68,7 +68,7 @@ ext {
             kotlinxSerialization : "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1",
             coroutines           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
             coroutinesAndroid    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
-            dataStore            : "androidx.datastore:datastore-preferences:1.0.0-alpha05",
+            dataStore            : "androidx.datastore:datastore-preferences:1.0.0-alpha06",
             lifeCycleScope       : "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0",
             liveData             : "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     ]
