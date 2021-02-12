@@ -28,3 +28,4 @@ Add On
   
 All References can be found in this [wiki](https://github.com/adilmas13/android-architecture/wiki/References)
 
+Currently project is on halt due to other commitments
