@@ -4,7 +4,7 @@ ext {
     // GLOBAL PROJECT SETTINGS
     //#############################
 
-    kotlin_version = '1.4.30'
+    kotlin_version = '1.4.31'
     gradle_version = '4.1.2'
     nav_version = '2.3.3'
     dokka_version = '1.4.0-rc'
