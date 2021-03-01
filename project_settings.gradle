@@ -18,7 +18,7 @@ ext {
 
     project = [
             applicationId = "com.popcorn",
-            compileSdkVersion = 29,
+            compileSdkVersion = 30,
             buildToolsVersion = "30.0.1",
             targetSdkVersion = 29,
             minSdkVersion = 21, // android 5.0 and above
